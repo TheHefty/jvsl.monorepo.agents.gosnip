@@ -9,10 +9,8 @@ project built for hands-on learning without depending on a hosted gist service.
 The project charter and software requirements are accepted. Product implementation has not begun;
 stories, acceptance scenarios, task designs, and code follow as separate review gates.
 
-The repository still contains release metadata inherited from its template. Versions listed in
-`CHANGELOG.md` and `version.txt` are not `gosnip` product releases. They will be replaced when the
-accepted distribution story is designed and implemented; the first product release is planned as
-0.1.0.
+No `gosnip` product release has been published. The release baseline starts at 0.0.0 so the first
+accepted product feature can produce the planned 0.1.0 release.
 
 ## Planned MVP
 

@@ -6,4 +6,8 @@ item, each with an `OVERVIEW.md` in the shape problem → root cause → fix →
 form ships with the template: see
 [`.code-server/docs/agent/en/DEBT-TEMPLATE.md`](../../.code-server/docs/agent/en/DEBT-TEMPLATE.md).
 
-This folder is empty because no shortcut or out-of-chain fix has been recorded for `gosnip`.
+Recorded items:
+
+- [`inherited-release-baseline/`](inherited-release-baseline/) — the template changelog, version,
+  and invalid bootstrap commit left behind when initialization was first marked complete; paid back
+  by resetting the product release state and adding its regression check.
