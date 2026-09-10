@@ -21,9 +21,10 @@ could otherwise be confused.
 
 ## Current state
 
-Initialization is complete: the charter and SRS have been accepted. No product code, test suite,
-story, or task exists yet. The next change is the first story and its Gherkin acceptance scenarios;
-implementation remains prohibited until that story and a task design pass their respective gates.
+Initialization, the first story, and its CLI-foundation task are accepted. Implementation now
+provides an isolated Go module, a testable command runner, embedded English messages, native unit
+CI, and an optional pre-push gate. Snippet persistence and the `add` command do not exist yet; their
+task designs remain the next gates.
 
 The product release baseline is 0.0.0 and contains no inherited template history. The accepted
 distribution story will produce the first product release as 0.1.0.
