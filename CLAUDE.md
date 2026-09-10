@@ -11,19 +11,17 @@ Guidance for agents working in this repository.
   including commit messages.
 - **This is the `gosnip` project.** It consumes the development-environment template vendored at
   `.code-server/`; it is not the template repository itself.
-- **Project initialization is still in progress.** The charter is the first gate. The SRS must be
-  accepted before any story is written, a story and its scenarios before its tasks, and a task's
-  design before its code.
+- **Project initialization is complete.** The charter and SRS are accepted. A story and its
+  scenarios must be accepted before its tasks, and a task's design before its code.
 
 ## If the imports below did not load
 
 The normative documents live inside the `.code-server/` submodule, which is empty until
-`git submodule update --init`. Imports that do not resolve fail silently. If the modes, rules, or
-initialization procedure are unavailable, stop and report it rather than proceeding without them.
+`git submodule update --init`. Imports that do not resolve fail silently. If the modes or rules are
+unavailable, stop and report it rather than proceeding without them.
 
 @.code-server/docs/agent/en/MODES.md
 @docs/RULES.md
-@.code-server/docs/agent/en/INITIALIZATION.md
 
 ## What this repository is
 
@@ -38,8 +36,8 @@ rules belong in this repository.
 
 ## Current development state
 
-There is no product code or project test suite yet. Do not create either before the charter and SRS
-gates have been completed and the first story and task have been accepted.
+There is no product code or project test suite yet. Do not create either before the relevant story
+and task have been accepted.
 
 The selected development stack is recorded in `.code-server.stack.json`. The generated
 `.code-server/Dockerfile` must never be hand-edited.

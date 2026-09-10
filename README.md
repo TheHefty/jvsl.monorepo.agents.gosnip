@@ -1,46 +1,65 @@
-# jvsl.monorepo.agents.template
+# gosnip
 
-A reference monorepo that has already adopted the
-[code-server](https://github.com/coder/code-server)-based dev container template — code-server
-itself, the Claude Code CLI, `ai-jail`, the GitHub CLI, a nested rootless Docker daemon, and a
-selectable set of tech stacks, all set up.
+`gosnip` is a personal, offline command-line application for storing reusable code snippets,
+finding them quickly, and copying their exact contents to the native clipboard. It is a small Go
+project built for hands-on learning without depending on a hosted gist service.
 
-The template itself lives in its own repo,
-[`jvsl.env.agents.code-server`](https://github.com/TheHefty/jvsl.env.agents.code-server), vendored
-here as a git submodule at `.code-server/` (mirroring how a `.devcontainer/` would work). Splitting
-it out this way means updating the template is a `git submodule update` (bump the pinned commit),
-not a rebase against this repo's own history. This repo itself is **not** an application — there's
-no product code here, only the root-level scaffolding a consuming monorepo keeps outside the
-submodule.
+## Status
 
-## Getting started
+The project charter and software requirements are accepted. Product implementation has not begun;
+stories, acceptance scenarios, task designs, and code follow as separate review gates.
 
-Clone with `git clone --recurse-submodules`, or `git submodule update --init` after a plain clone —
-`.code-server/` is empty until the submodule is checked out.
+The repository still contains release metadata inherited from its template. Versions listed in
+`CHANGELOG.md` and `version.txt` are not `gosnip` product releases. They will be replaced when the
+accepted distribution story is designed and implemented; the first product release is planned as
+0.1.0.
 
-From there, build/run instructions, prerequisites, and the list of available stacks are all in
-[`.code-server/README.md`](.code-server/README.md) — this repo doesn't repeat them since they
-belong to the template, not to being a consumer of it. The one thing specific to this side of the
-submodule boundary is `.code-server.stack.json` at this repo's own root: the per-project stack
-selection, written by `.code-server/setup`.
+## Planned MVP
 
-## Docs
+The accepted MVP will provide:
 
-- [`CLAUDE.md`](CLAUDE.md) — the entry point an agent loads. It keeps what has to survive the
-  submodule not being checked out, and imports the rest from the template.
-- [`docs/RULES.md`](docs/RULES.md) — one import line for the inherited rules, plus whatever this
-  project adds below it.
-- [`.code-server/docs/agent/`](.code-server/docs/agent/) — inside the submodule: the process
-  documents themselves, one folder per language. They ship with the template and arrive by bumping
-  it, rather than being copied once at project creation and then quietly frozen.
-- [`docs/OVERVIEW.md`](docs/OVERVIEW.md) — short "how to use this template" guide.
-- [`.code-server/docs/overview/`](.code-server/docs/overview/) — inside the submodule: full
-  design rationale for the template itself — every decision made, the `core/`/`stacks/` structure,
-  the manifest format, and build issues already hit and fixed. Treated as the authoritative,
-  up-to-date spec for anything under `.code-server/`; versions together with
-  [`jvsl.env.agents.code-server`](https://github.com/TheHefty/jvsl.env.agents.code-server), not
-  with this repo.
+- creation, editing, deliberate deletion, listing, filtering, smart-case search, and inspection of
+  snippets;
+- exact transfer of snippet code to the native Linux, macOS, and Windows clipboard;
+- local SQLite persistence with transactional migrations and recovery backups;
+- human-readable terminal output and stable JSON contracts for automation;
+- release archives for Linux, macOS, and Windows on amd64 and arm64.
+
+The MVP deliberately excludes hosting, accounts, synchronization, collaboration, a graphical
+interface, import/export, encryption, syntax highlighting, shell completion, telemetry, and secure
+erasure.
+
+## Development environment
+
+Clone with the submodule initialized:
+
+```bash
+git clone --recurse-submodules https://github.com/TheHefty/jvsl.monorepo.agents.gosnip.git
+cd jvsl.monorepo.agents.gosnip
+```
+
+Prepare the host once, build the selected Go development image, and open the environment:
+
+```bash
+.code-server/init
+.code-server/setup
+.code-server/dev
+```
+
+The environment implementation and prerequisites are documented in
+[`.code-server/README.md`](.code-server/README.md). The project-specific stack selection lives in
+`.code-server.stack.json`; `.code-server/Dockerfile` is generated and must not be edited manually.
+
+## Project documents
+
+- [`docs/CHARTER.md`](docs/CHARTER.md) records why the project exists and its scope boundaries.
+- [`docs/SRS.md`](docs/SRS.md) is the accepted source of truth for behavior, constraints, and the
+  epic/story decomposition.
+- [`docs/OVERVIEW.md`](docs/OVERVIEW.md) summarizes the intended product and current state.
+- [`docs/ARCHITECTURE/OVERVIEW.md`](docs/ARCHITECTURE/OVERVIEW.md) records the architecture that
+  exists today.
+- [`docs/PLANNING/`](docs/PLANNING/) will contain accepted stories, scenarios, and tasks.
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) © 2026 João Lima.
