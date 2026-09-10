@@ -430,7 +430,7 @@ func createV1Fixture(t *testing.T, path, name, nameKey string) {
 
 func assertSchemaAndSnippet(t *testing.T, path string, wantVersion int, wantName string) {
 	t.Helper()
-	db, err := sql.Open("sqlite", "file:"+filepath.ToSlash(path)+"?mode=ro")
+	db, err := sql.Open("sqlite", readOnlyDSN(path))
 	if err != nil {
 		t.Fatal(err)
 	}

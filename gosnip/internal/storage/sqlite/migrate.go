@@ -184,7 +184,8 @@ func createBackup(ctx context.Context, path string, timestamp time.Time, busyTim
 		if !ok {
 			return fmt.Errorf("SQLite driver does not support online backup")
 		}
-		backup, err := backuper.NewBackup(backupPath)
+		backupURI := databaseURI(backupPath)
+		backup, err := backuper.NewBackup(backupURI.String())
 		if err != nil {
 			return err
 		}

@@ -8,6 +8,7 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -204,12 +205,29 @@ func now(options Options) time.Time {
 }
 
 func databaseDSN(path string, busyTimeout time.Duration) string {
-	u := url.URL{Scheme: "file", Path: filepath.ToSlash(path)}
+	u := databaseURI(path)
 	query := u.Query()
 	query.Set("_busy_timeout", strconv.FormatInt(busyTimeout.Milliseconds(), 10))
 	query.Set("_foreign_keys", "on")
 	u.RawQuery = query.Encode()
 	return u.String()
+}
+
+func readOnlyDSN(path string) string {
+	u := databaseURI(path)
+	query := u.Query()
+	query.Set("mode", "ro")
+	query.Set("_query_only", "1")
+	u.RawQuery = query.Encode()
+	return u.String()
+}
+
+func databaseURI(path string) url.URL {
+	uriPath := filepath.ToSlash(path)
+	if runtime.GOOS == "windows" && len(uriPath) >= 2 && uriPath[1] == ':' {
+		uriPath = "/" + uriPath
+	}
+	return url.URL{Scheme: "file", Path: uriPath}
 }
 
 func classifyCreateError(name string, err error) error {
