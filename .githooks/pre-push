@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+root="$(git rev-parse --show-toplevel)"
+
+while read -r _local_ref _local_sha remote_ref _remote_sha; do
+    if [ "$remote_ref" = "refs/heads/master" ]; then
+        echo "pre-push: refusing to push straight to master. Open a pull request instead." >&2
+        echo "          If this is deliberate: git push --no-verify" >&2
+        exit 1
+    fi
+done
+
+exec bash "$root/scripts/test-unit.sh"

@@ -4,15 +4,21 @@ What the `gosnip` system is, as implemented today.
 
 ## Current system
 
-There is no product implementation yet. The repository contains an accepted charter and SRS, the
-planning structure, release scaffolding inherited from the repository template, and a vendored
-development environment. No Go module, executable, database schema, product workflow, or test suite
-exists, so presenting a component architecture here would turn an unreviewed design into apparent
-fact.
+The product is an isolated Go module under `gosnip/` within the repository. Its executable entry
+point in `cmd/gosnip` owns process-global arguments, streams, and exit handling, then delegates to
+`internal/cli.Run`. That runner accepts its context, arguments, stdin, stdout, and stderr, so command
+behavior can be tested without spawning or terminating a process.
 
-The accepted constraints are recorded in [`../SRS.md`](../SRS.md). Architecture will be added here
-as accepted tasks create real boundaries and code. Each update must describe what exists at that
-commit, not what a later story intends to build.
+Human-facing messages come from the embedded English catalogue in `internal/i18n`. The implemented
+foundation handles root help, explicit help, development version output, and usage failures. It
+does not open storage; snippet commands and SQLite do not exist yet.
+
+The repository root owns cross-module infrastructure. `scripts/test-unit.sh` defines the fast test
+suite used by native pull-request CI and the optional versioned pre-push hook. The hook also refuses
+direct updates to `master`, while protected-branch settings and CI remain authoritative.
+
+The accepted constraints are recorded in [`../SRS.md`](../SRS.md). Each update here describes what
+exists at that commit, not what a later story intends to build.
 
 ## Development environment boundary
 
