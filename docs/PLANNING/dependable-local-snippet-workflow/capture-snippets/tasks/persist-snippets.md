@@ -2,7 +2,7 @@
 status: Draft
 story: dependable-local-snippet-workflow/capture-snippets
 epic: dependable-local-snippet-workflow
-pr:
+pr: 8
 depends-on:
   - establish-cli-foundation
 ---
