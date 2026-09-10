@@ -3,8 +3,7 @@
 ## Supported versions
 
 `gosnip` has no product release yet. Once 0.1.0 is released, only the most recent product release
-will receive fixes. The versions currently present in `CHANGELOG.md` and `version.txt` are inherited
-template metadata and are not supported `gosnip` versions.
+will receive fixes. The 0.0.0 repository baseline is not a supported release.
 
 ## Reporting a vulnerability
 

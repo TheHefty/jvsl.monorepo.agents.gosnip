@@ -25,9 +25,8 @@ Initialization is complete: the charter and SRS have been accepted. No product c
 story, or task exists yet. The next change is the first story and its Gherkin acceptance scenarios;
 implementation remains prohibited until that story and a task design pass their respective gates.
 
-Release files inherited from the repository template still contain template history and version
-1.8.0. They are not `gosnip` product releases. The accepted distribution story will replace that
-baseline and produce the first product release as 0.1.0.
+The product release baseline is 0.0.0 and contains no inherited template history. The accepted
+distribution story will produce the first product release as 0.1.0.
 
 ## Development environment
 

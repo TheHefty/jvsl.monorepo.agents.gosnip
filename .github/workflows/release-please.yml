@@ -20,6 +20,14 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out the release history
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Verify the product release state
+        run: scripts/release-state.test.sh
+
       - uses: googleapis/release-please-action@v4
         with:
           config-file: release-please-config.json
