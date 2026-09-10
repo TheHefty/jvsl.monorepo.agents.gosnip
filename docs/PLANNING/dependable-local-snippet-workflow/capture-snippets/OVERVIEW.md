@@ -31,7 +31,7 @@ with a Gherkin runner and observes it fail for missing behavior.
 
 | Order | Task | Status | Depends on |
 |---|---|---|---|
-| 1 | [`establish-cli-foundation`](tasks/establish-cli-foundation.md) | Draft | — |
+| 1 | [`establish-cli-foundation`](tasks/establish-cli-foundation.md) | Accepted | — |
 
 The persistence and complete `add` integration tasks will be designed only after their respective
 predecessors are accepted. The final integration task will register this story's exact feature file

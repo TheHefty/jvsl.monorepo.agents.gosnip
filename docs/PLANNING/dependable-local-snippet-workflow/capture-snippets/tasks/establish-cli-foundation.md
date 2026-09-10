@@ -1,5 +1,5 @@
 ---
-status: Draft
+status: Accepted
 story: dependable-local-snippet-workflow/capture-snippets
 epic: dependable-local-snippet-workflow
 pr: 6
@@ -122,4 +122,7 @@ Gocuke plus distinct E2E tests on the release-please PR.
 
 ## Outcome
 
-Pending owner review of this task gate.
+Accepted by the owner on 2026-09-10. The implementation will use the standard-library CLI and test
+runner boundaries described above, run fast unit tests on every pull request and pre-push, and
+defer Gocuke acceptance plus executable E2E coverage to the final `add` integration task and the
+release-please pull request.
