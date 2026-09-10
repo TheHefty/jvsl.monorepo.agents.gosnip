@@ -7,8 +7,8 @@ project built for hands-on learning without depending on a hosted gist service.
 ## Status
 
 The project charter, software requirements, first story, and CLI-foundation task are accepted. The
-Go executable and fast native test foundation are implemented; snippet persistence and operations
-remain behind their task-design gates.
+Go executable, fast native test foundation, validated snippet domain, and SQLite store are
+implemented. Connecting persistence to the `add` command remains behind its task-design gate.
 
 No `gosnip` product release has been published. The release baseline starts at 0.0.0 so the first
 accepted product feature can produce the planned 0.1.0 release.

@@ -22,9 +22,10 @@ could otherwise be confused.
 ## Current state
 
 Initialization, the first story, and its CLI-foundation task are accepted. Implementation now
-provides an isolated Go module, a testable command runner, embedded English messages, native unit
-CI, and an optional pre-push gate. Snippet persistence and the `add` command do not exist yet; their
-task designs remain the next gates.
+provides an isolated Go module, a testable command runner, embedded English messages, validated
+snippet values, private SQLite persistence with schema migration backups, native unit CI, and an
+optional pre-push gate. The store is not connected to the CLI; integrating the `add` command remains
+the next task gate.
 
 The product release baseline is 0.0.0 and contains no inherited template history. The accepted
 distribution story will produce the first product release as 0.1.0.

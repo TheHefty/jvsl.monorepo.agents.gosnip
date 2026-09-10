@@ -11,7 +11,13 @@ behavior can be tested without spawning or terminating a process.
 
 Human-facing messages come from the embedded English catalogue in `internal/i18n`. The implemented
 foundation handles root help, explicit help, development version output, and usage failures. It
-does not open storage; snippet commands and SQLite do not exist yet.
+does not open storage itself.
+
+`internal/snippet` owns validation and canonicalization before persistence. `internal/storage/sqlite`
+owns platform-default paths, private filesystem boundaries, schema migrations, online backups,
+writer coordination, and atomic creation. Its current schema is v2; a populated v1 database is the
+supported migration source. The command runner is not connected to the store yet, so no snippet
+command is exposed by the executable.
 
 The repository root owns cross-module infrastructure. `scripts/test-unit.sh` defines the fast test
 suite used by native pull-request CI and the optional versioned pre-push hook. The hook also refuses
