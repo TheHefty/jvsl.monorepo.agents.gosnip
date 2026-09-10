@@ -6,6 +6,6 @@ under it. The procedure that produces them ships with the template: see
 chain, [`TASKS.md`](../../.code-server/docs/agent/en/TASKS.md) for the task unit, and the
 `*-TEMPLATE.md` files beside them for the forms to copy.
 
-This folder is empty, which is the correct state here: this is the template, not a project built
-on it, and the planning files start in the repositories that adopt it. What replaced the old
-`docs/RFC/` and `docs/SCENARIOS/` folders arrived with the `.code-server` 2.0.0 bump.
+The accepted decomposition is in [`../SRS.md`](../SRS.md). This folder remains empty until the
+first story grilling produces its `OVERVIEW.md` and Gherkin scenarios in their own pull request.
+No task or product code may precede that story gate.

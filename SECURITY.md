@@ -2,34 +2,31 @@
 
 ## Supported versions
 
-Only the most recent release is supported. See [`CHANGELOG.md`](CHANGELOG.md).
+`gosnip` has no product release yet. Once 0.1.0 is released, only the most recent product release
+will receive fixes. The versions currently present in `CHANGELOG.md` and `version.txt` are inherited
+template metadata and are not supported `gosnip` versions.
 
 ## Reporting a vulnerability
 
-Report privately through GitHub: **[Security → Report a
-vulnerability](https://github.com/TheHefty/jvsl.monorepo.agents.template/security/advisories/new)**.
+Report privately through GitHub:
+**[Security → Report a vulnerability](https://github.com/TheHefty/jvsl.monorepo.agents.gosnip/security/advisories/new)**.
 
-Please do not open a public issue for something you believe is exploitable.
+Please do not open a public issue for something you believe is exploitable. This is a personal
+project with one maintainer, so acknowledgement is best-effort with no guaranteed response time or
+bounty.
 
-This is a personal project with a single maintainer — expect a best-effort acknowledgement, with no
-guaranteed response time and no bounty.
+## Scope
 
-## Where the security-relevant code actually lives
+Product security reports belong here when they concern the future `gosnip` executable, local
+SQLite data, migrations or backups, editor and clipboard integration, command/output contracts, or
+release artifacts and workflows. There is no product code yet, but these boundaries are fixed by
+the accepted SRS.
 
-This repository is scaffolding. It contains no application code and no build logic — only this
-policy, the documentation, the release configuration, and `.code-server.stack.json`, which selects
-which tech stacks the dev container is built with.
+`gosnip` is designed for the owner's nonsensitive snippets. It does not promise secure erasure and
+must not be used to store credentials, tokens, identity documents, or sensitive personal data.
+Normal operation is offline and performs no telemetry or update checks.
 
-Everything that builds or runs anything — the container image, the nested rootless Docker daemon,
-`ai-jail`, and the native launcher and its `docker run` flags — comes from the dev-container
-template vendored at `.code-server/`, which is a git submodule of
-[`jvsl.env.agents.code-server`](https://github.com/TheHefty/jvsl.env.agents.code-server).
-
-**If your finding concerns the container, the sandbox, or the launcher, report it there instead:**
-[its security policy](https://github.com/TheHefty/jvsl.env.agents.code-server/blob/main/SECURITY.md)
-covers the threat model, what is in scope, and which permissive behaviours are deliberate. Reporting
-it against this repository only adds a hop.
-
-What is worth reporting *here* is something specific to this repo as a consumer of that template —
-for example a stack selection in `.code-server.stack.json` that pulls in something it should not, or
-a workflow in `.github/workflows/` that mishandles a token.
+The development container, agent sandbox, nested Docker daemon, and native launcher belong to the
+template vendored at `.code-server/`. Report vulnerabilities in those components through the
+[template security policy](https://github.com/TheHefty/jvsl.env.agents.code-server/blob/main/SECURITY.md)
+instead.
