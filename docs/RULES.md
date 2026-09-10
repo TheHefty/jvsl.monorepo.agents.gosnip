@@ -10,6 +10,6 @@ every project that bumps rather than only this one.
 
 Everything below this line belongs to this repository.
 
-This one has none of its own yet. That is the honest state and not an oversight: it is the
-reference monorepo, so what would be a project rule here is either an inherited rule already or a
-fact about the repository, which lives in `CLAUDE.md`.
+`gosnip` has no additional project-specific rules yet. The inherited rules above govern the
+project; standing decisions belong in `docs/CHARTER.md` and `CLAUDE.md` rather than being duplicated
+here.

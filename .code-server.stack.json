@@ -1,5 +1,7 @@
 {
+  "golang": "1.26.5",
   "limits": {
-    "memory": "6g"
+    "memory": "6g",
+    "memorySwap": "6g"
   }
 }
