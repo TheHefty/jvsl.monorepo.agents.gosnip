@@ -1,5 +1,5 @@
 ---
-status: Draft
+status: Accepted
 story: dependable-local-snippet-workflow/capture-snippets
 epic: dependable-local-snippet-workflow
 pr: 8
@@ -151,4 +151,4 @@ symlink refusal.
 
 ## Outcome
 
-Pending owner review of this task gate.
+Accepted by the owner on 2026-09-10 without changes to the proposed design.
