@@ -32,10 +32,10 @@ with a Gherkin runner and observes it fail for missing behavior.
 | Order | Task | Status | Depends on |
 |---|---|---|---|
 | 1 | [`establish-cli-foundation`](tasks/establish-cli-foundation.md) | Accepted | — |
+| 2 | [`persist-snippets`](tasks/persist-snippets.md) | Accepted | `establish-cli-foundation` |
 
-The persistence and complete `add` integration tasks will be designed only after their respective
-predecessors are accepted. The final integration task will register this story's exact feature file
-with Gocuke and add the release-PR acceptance and end-to-end gates.
+The complete `add` integration task will be designed after persistence is accepted. It will register
+this story's exact feature file with Gocuke and add the release-PR acceptance and end-to-end gates.
 
 ## Out of scope
 
