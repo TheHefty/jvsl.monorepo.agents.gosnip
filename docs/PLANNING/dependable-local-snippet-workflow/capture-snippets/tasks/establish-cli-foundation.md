@@ -2,7 +2,7 @@
 status: Draft
 story: dependable-local-snippet-workflow/capture-snippets
 epic: dependable-local-snippet-workflow
-pr:
+pr: 6
 depends-on: []
 ---
 
