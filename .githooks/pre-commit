@@ -16,16 +16,14 @@
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CHECK="$HERE/../.code-server/scripts/check-md-size.sh"
-
-# Say why, rather than dying on a missing file. The submodule is empty until
-# `git submodule update --init`, and a hook that fails with "No such file or
-# directory" sends the next person looking for a bug in their commit.
-if [ ! -f "$CHECK" ]; then
-    echo "pre-commit: $CHECK is missing." >&2
-    echo "pre-commit: the .code-server/ submodule is not checked out — run" >&2
-    echo "pre-commit:     git submodule update --init" >&2
+# check-md-size ships in the agent container's image, on its PATH (FR-127).
+# In a window connected to the project's container the editor's git runs
+# inside it, where the image's PATH is. Say why, rather than dying on a
+# missing command.
+if ! command -v check-md-size >/dev/null 2>&1; then
+    echo "pre-commit: check-md-size is not on PATH. It ships in the agent container's image:" >&2
+    echo "pre-commit: commit from a window connected to the project's container, or rebuild its image." >&2
     exit 1
 fi
 
-exec bash "$CHECK" --root "$HERE/.."
+exec check-md-size --root "$HERE/.."
