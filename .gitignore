@@ -6,3 +6,7 @@
 .beads-credential-key
 .beads/proxieddb/
 *.gate.lock*
+
+# The dev container configuration this machine generates: absolute paths to
+# this project and to ~/.claude. Never committed.
+.devcontainer/
