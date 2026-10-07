@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "jvsl_monorepo_agents_gosnip",
+  "project_id": "c21b16e6-1017-483f-b752-b432b3b2f327"
+}
