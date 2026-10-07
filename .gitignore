@@ -1,2 +1,12 @@
 .ai-jail
 .claude/settings.local.json
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+.beads/proxieddb/
+*.gate.lock*
+
+# The dev container configuration this machine generates: absolute paths to
+# this project and to ~/.claude. Never committed.
+.devcontainer/

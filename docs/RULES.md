@@ -1,10 +1,9 @@
 # Rules
 
-The inherited rules, shipped by the template and updated by bumping it. They are not edited here:
-a rule that needs changing is changed in `.code-server/docs/agent/`, where changing it reaches
-every project that bumps rather than only this one.
-
-@../.code-server/docs/agent/en/RULES.md
+The inherited rules ship inside the agent container's image and are loaded from
+`/config/.claude/rules/RULES.md`; they are updated by updating the Agent Container extension. They
+are not edited here: a rule that needs changing is changed in the extension's repository, where
+changing it reaches every project rather than only this one.
 
 ---
 

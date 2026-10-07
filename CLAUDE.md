@@ -9,18 +9,18 @@ Guidance for agents working in this repository.
   personally.
 - **The documentation language is English.** Every project file written from here on inherits it,
   including commit messages.
-- **This is the `gosnip` project.** It consumes the development-environment template vendored at
-  `.code-server/`; it is not the template repository itself.
+- **This is the `gosnip` project.** Its development environment is provided by the Agent Container
+  VS Code extension (`jvsl.env.agents.container`); this is not that extension's repository.
 - **Project initialization is complete.** The charter and SRS are accepted. A story and its
   scenarios must be accepted before its tasks, and a task's design before its code.
 
-## If the imports below did not load
+## If the normative documents did not load
 
-The normative documents live inside the `.code-server/` submodule, which is empty until
-`git submodule update --init`. Imports that do not resolve fail silently. If the modes or rules are
-unavailable, stop and report it rather than proceeding without them.
+The inherited modes and rules ship inside the agent container's image and are loaded from
+`/config/.claude/rules/` (`MODES.md` and `RULES.md`). Outside that container they are absent, and
+nothing reports the absence. If the modes or rules are unavailable, stop and report it rather than
+proceeding without them.
 
-@.code-server/docs/agent/en/MODES.md
 @docs/RULES.md
 
 ## What this repository is
@@ -30,37 +30,30 @@ local SQLite database, finding them quickly, and copying them to the clipboard. 
 and standing decisions live in `docs/CHARTER.md`. Detailed behavior and architecture remain
 undecided until the SRS and subsequent planning gates are accepted.
 
-The environment template is a git submodule at `.code-server/`. Its implementation and design
-rationale belong to the template repository; project code, requirements, architecture, and local
-rules belong in this repository.
+The development environment is not vendored here. The Agent Container extension composes and builds
+the image and generates `.devcontainer/devcontainer.json`; its implementation and design rationale
+belong to the extension's repository. Project code, requirements, architecture, and local rules
+belong in this repository.
 
 ## Current development state
 
 There is no product code or project test suite yet. Do not create either before the relevant story
 and task have been accepted.
 
-The selected development stack is recorded in `.code-server.stack.json`. The generated
-`.code-server/Dockerfile` must never be hand-edited.
+The selected development stack is recorded in `.agent-container.stack.json`. The generated
+`.devcontainer/devcontainer.json` is rewritten by the extension and must never be hand-edited.
 
-## Environment commands
+## Environment
 
-Prepare the host once:
+Open the repository in VS Code on the host with the Agent Container extension installed, and use
+its `Agent Container:` commands to build the image and open the container. Nothing needs to be run
+from this repository to prepare the host.
 
-```bash
-.code-server/init
-```
+## Work tracker
 
-Build or rebuild the development image:
-
-```bash
-.code-server/setup
-```
-
-Open the environment:
-
-```bash
-.code-server/dev
-```
+Epics, stories, tasks, and debts live in the `bd` tracker, not in Markdown; the charter and SRS
+remain files. The tracker travels by this repository's remote as `refs/dolt/data`: run
+`bd dolt push` alongside every approved `git push`, and never on its own.
 
 ## Planning workflow
 
@@ -68,12 +61,12 @@ The mandatory chain is:
 
 1. Accepted charter in `docs/CHARTER.md`.
 2. Accepted SRS in `docs/SRS.md`.
-3. Accepted story overview and Gherkin scenarios under `docs/PLANNING/`.
-4. Accepted task design, including its three worst failure scenarios.
+3. Accepted story, with its overview and Gherkin scenarios, in the `bd` tracker.
+4. Accepted task design in the tracker, including its three worst failure scenarios.
 5. Product code written test-first from those scenarios.
 
-Each document is its own pull request and is agreed before the next link is written. The full
-procedure is `.code-server/docs/agent/en/WORKFLOW.md`.
+Each link is agreed before the next is written: the charter and SRS through their own pull requests,
+tracker items as proposals that the user accepts.
 
 ## Branches and releases
 
@@ -84,5 +77,6 @@ Use conventional commits. When a feature PR is merged with a merge commit, its P
 non-conventional so release-please does not count it twice. Never rename a release-please release
 PR, because its title carries the version used to create the tag.
 
-When updating `.code-server/`, pin it to a released tag, read the template changelog, and rerun
-`.code-server/setup` after the bump.
+Updating the environment means updating the Agent Container extension and rebuilding the image
+through it; read the extension's changelog first, because a new version can change the inherited
+rules as well as the image.

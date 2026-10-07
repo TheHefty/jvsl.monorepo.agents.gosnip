@@ -30,11 +30,10 @@ distribution story will produce the first product release as 0.1.0.
 
 ## Development environment
 
-The development environment is vendored as the `.code-server/` submodule. It provides code-server,
-the agent tooling, a sandbox, nested rootless Docker, and the selected Go stack. Its own design is
-documented in [`.code-server/docs/overview/`](../.code-server/docs/overview/) and versions with the
-template rather than this product.
+The development environment is provided by the Agent Container VS Code extension
+(`jvsl.env.agents.container`), not vendored in this repository. It provides the agent tooling, a
+sandbox, nested rootless Docker, and the selected Go stack, and its design versions with the
+extension rather than this product.
 
-The project manifest is `.code-server.stack.json`. Use `.code-server/setup` to regenerate the
-development image and `.code-server/dev` to open it; never edit the generated
-`.code-server/Dockerfile`.
+The project manifest is `.agent-container.stack.json`. The extension builds the image from it and
+generates `.devcontainer/devcontainer.json`, which must not be edited by hand.

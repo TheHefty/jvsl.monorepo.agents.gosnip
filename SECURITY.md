@@ -25,7 +25,6 @@ the accepted SRS.
 must not be used to store credentials, tokens, identity documents, or sensitive personal data.
 Normal operation is offline and performs no telemetry or update checks.
 
-The development container, agent sandbox, nested Docker daemon, and native launcher belong to the
-template vendored at `.code-server/`. Report vulnerabilities in those components through the
-[template security policy](https://github.com/TheHefty/jvsl.env.agents.code-server/blob/main/SECURITY.md)
-instead.
+The development container, agent sandbox, and nested Docker daemon belong to the Agent Container
+extension (`jvsl.env.agents.container`). Report vulnerabilities in those components through that
+repository's security policy instead.
